@@ -13,8 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const yamlCreator_1 = __importDefault(require("../yamlCreator"));
-const child_process_1 = require("child_process");
 const fs_extra_1 = __importDefault(require("fs-extra"));
+const child_process_1 = require("child_process");
 const jsCode = `
 exports.handler = function (event, context, callback) {
   callback(null, 'hello world');
@@ -28,7 +28,10 @@ class fcNodejsApplication {
         this.yamlCreator.addKey('access', 'default');
         this.yamlCreator.addKeys({
             resources: {
-                fcNodejsApplication: Object.assign(Object.assign({}, spec), { code: './code' })
+                fcNodejsApplication: {
+                    component: 'fc3',
+                    props: Object.assign(Object.assign({}, spec), { code: './code' })
+                }
             }
         });
         this.yamlCreator.save();
@@ -41,7 +44,7 @@ class fcNodejsApplication {
     deploy() {
         return __awaiter(this, void 0, void 0, function* () {
             // deploy
-            yield (0, child_process_1.spawnSync)('s', ['deploy'], { stdio: 'inherit', cwd: this.path });
+            (0, child_process_1.spawn)('s', ['deploy'], { stdio: 'inherit', cwd: this.path, shell: true });
         });
     }
 }

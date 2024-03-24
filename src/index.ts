@@ -1,4 +1,3 @@
-import Engine from '@serverless-devs/engine';
 import fcNodejsApplication from './template/fcNodejsApplication';
 
 const fcapp = new fcNodejsApplication({

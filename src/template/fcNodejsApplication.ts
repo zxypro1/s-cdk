@@ -1,6 +1,6 @@
 import YamlCreator from "../yamlCreator";
-import { spawnSync } from 'child_process';
 import fs from 'fs-extra';
+import { spawn } from 'child_process';
 
 interface FCNodeSpec {
   region: 
@@ -49,8 +49,11 @@ export default class fcNodejsApplication {
     this.yamlCreator.addKeys({
       resources: {
         fcNodejsApplication: {
-          ...spec,
-          code: './code',
+          component: 'fc3',
+          props: {
+            ...spec,
+            code: './code',
+          }
         }
       }
     });
@@ -63,6 +66,6 @@ export default class fcNodejsApplication {
   }
   public async deploy () {
     // deploy
-    await spawnSync('s', ['deploy'], { stdio: 'inherit', cwd: this.path });
+    spawn('s', ['deploy'], { stdio: 'inherit', cwd: this.path, shell: true });
   }
 }
