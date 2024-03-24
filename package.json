@@ -1,0 +1,25 @@
+{
+  "name": "s-cdk",
+  "version": "1.0.0",
+  "description": "cdk for serverless devs",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@serverless-devs/engine": "^0.1.1",
+    "@types/fs-extra": "^11.0.4",
+    "@types/js-yaml": "^4.0.9",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "@serverless-devs/s": "^3.0.4"
+  }
+}
