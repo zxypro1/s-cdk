@@ -11,6 +11,6 @@ const fcapp = new fcNodejsApplication_1.default({
     memorySize: 128,
     timeout: 60,
     region: 'cn-hangzhou',
-    description: 'fcNodejsApplication'
+    description: 'fcNodejsApplication',
 });
 fcapp.deploy();

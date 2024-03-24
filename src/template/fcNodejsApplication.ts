@@ -10,7 +10,7 @@ interface FCNodeSpec {
     'cn-shenzhen' | 
     'cn-zhangjiakou' | 
     'cn-huhehaote';
-  description: string;
+  description?: string;
   functionName: string;
   handler: string;
   runtime: 'nodejs8' | 'nodejs10' | 'nodejs12' | 'nodejs14';

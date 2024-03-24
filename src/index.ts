@@ -7,7 +7,7 @@ const fcapp = new fcNodejsApplication({
   memorySize: 128, 
   timeout: 60, 
   region: 'cn-hangzhou', 
-  description: 'fcNodejsApplication'
+  description: 'fcNodejsApplication',
 });
 
 fcapp.deploy();
