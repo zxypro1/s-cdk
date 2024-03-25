@@ -16,7 +16,8 @@ interface FCNodeSpec {
   runtime: 'nodejs8' | 'nodejs10' | 'nodejs12' | 'nodejs14';
   memorySize: number;
   timeout: number;
-  trigger?: Array<Trigger>;
+  triggers?: Array<Trigger>;
+  access? : string;
 }
 
 interface TriggerConfig {
@@ -41,17 +42,18 @@ export default class fcNodejsApplication {
   yamlCreator: YamlCreator;
   path: string;
   constructor (spec: FCNodeSpec) {
+    const { access, ...rest } = spec;
     this.path = './.temp/FCNodejsApplication/';
     this.yamlCreator = new YamlCreator(this.path);
     this.yamlCreator.addKey('edition', '3.0.0');
     this.yamlCreator.addKey('name', 'nodejs-application');
-    this.yamlCreator.addKey('access', 'default');
+    this.yamlCreator.addKey('access', access || 'default');
     this.yamlCreator.addKeys({
       resources: {
         fcNodejsApplication: {
           component: 'fc3',
           props: {
-            ...spec,
+            ...rest,
             code: './code',
           }
         }
